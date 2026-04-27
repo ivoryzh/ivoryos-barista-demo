@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IvoryOS | Coffee Shop Demo</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./static/css/style.css">
+</head>
+
+<body>
+    <div class="app-shell">
+        <header class="app-header">
+            <h1>Ivory's <span>Coffee Shop</span></h1>
+        </header>
+
+        <div class="main-content">
+            <!-- Left Side: Code & Context -->
+            <div class="left-col">
+                <div class="code-card">
+                    <div class="pycharm-header">
+                        <div class="dots"><span class="dot close"></span><span class="dot min"></span><span
+                                class="dot max"></span></div>
+                        <div class="title">demo.py</div>
+                    </div>
+                    <div class="pycharm-window">
+                        <pre><code><span class="keyword">class</span> <span class="classname">CoffeeMachine</span><span class="punct">:</span>
+    <span class="keyword">def</span> <span class="method">add_beans</span>(<span class="self">self</span><span class="punct">,</span> <span class="property">bean_grams</span><span class="punct">:</span> <span class="type">float</span>) <span class="punct">-&gt;</span> <span class="type">float</span><span class="punct">:</span><span class="folded">...</span>
+    
+    <span class="keyword">def</span> <span class="method">add_sugar</span>(<span class="self">self</span><span class="punct">,</span> <span class="property">sugar_grams</span><span class="punct">:</span> <span class="type">float</span>) <span class="punct">-&gt;</span> <span class="type">float</span><span class="punct">:</span><span class="folded">...</span>
+    
+    <span class="keyword">def</span> <span class="method">add_milk</span>(<span class="self">self</span><span class="punct">,</span> <span class="property">milk_ml</span><span class="punct">:</span> <span class="type">float</span>) <span class="punct">-&gt;</span> <span class="type">float</span><span class="punct">:</span><span class="folded">...</span>
+    
+    <span class="keyword">def</span> <span class="method">top_up_with_hot_water</span>(<span class="self">self</span>) <span class="punct">-&gt;</span> <span class="type">float</span><span class="punct">:</span><span class="folded">...</span>
+
+<span class="keyword">class</span> <span class="classname">AnnoyingCustomer</span><span class="punct">:</span>
+    <span class="keyword">def</span> <span class="method">taste</span>(<span class="self">self</span>) <span class="punct">-&gt;</span> <span class="type">float</span><span class="punct">:</span><span class="folded">...</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="task-description card">
+                    <p>I have a Python <strong>barista</strong> API, and an <strong>annoying customer</strong>.</p>
+                    <p><strong>The Task:</strong> Teach a non-coder how to use this barista to satisfy this customer.
+                    </p>
+                    <p><em>Why?</em> Science is sometimes a black box. In a <strong>self-driving lab</strong>,
+                        developers must teach scientists how to code an optimization loop.</p>
+                </div>
+            </div>
+
+            <!-- Right Side: Visualization & Sliders -->
+            <div class="right-col">
+                <!-- Legend Moved to Top -->
+                <div class="legend">
+                    <div class="legend-item"><img src="./static/img/coffee_bean.svg" class="legend-icon"
+                            alt="Beans"> <span>Beans</span></div>
+                    <div class="legend-item"><img src="./static/img/sugar_cube.svg" class="legend-icon"
+                            alt="Sugar"> <span>Sugar</span></div>
+                    <div class="legend-item"><img src="./static/img/milk.svg" class="legend-icon"
+                            alt="Milk"> <span>Milk</span></div>
+                    <div class="legend-item"><img src="./static/img/water.svg" class="legend-icon"
+                            alt="Water"> <span>Water</span></div>
+                </div>
+
+                <div class="stage-card">
+                    <div class="stage-content">
+                        <!-- Mug -->
+                        <div class="coffee-glass">
+                            <div class="glass-rim"></div>
+                            <div class="glass-body">
+                                <div class="layers" id="layersContainer">
+                                    <div class="layer layer-water" id="layerWater"></div>
+                                    <div class="layer layer-milk" id="layerMilk"></div>
+                                    <div class="layer layer-beans" id="layerBeans"></div>
+                                    <div class="layer layer-sugar" id="layerSugar"></div>
+                                </div>
+                                <div class="mixed-liquid" id="mixedLiquid"></div>
+                            </div>
+                        </div>
+
+                        <!-- Customer -->
+                        <div class="customer-col">
+                            <div class="speech-bubble" id="scoreBadge">SCORE: --</div>
+                            <div class="avatar">🧑‍🦱</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sliders-card card">
+                    <div class="sliders-grid">
+                        <div class="slider-group">
+                            <div class="slider-head">
+                                <span class="label">Beans</span>
+                                <output id="valBeans">15g</output>
+                            </div>
+                            <input type="range" id="inputBeans" min="5" max="30" step="1" value="15">
+                        </div>
+                        <div class="slider-group">
+                            <div class="slider-head">
+                                <span class="label">Sugar</span>
+                                <output id="valSugar">5g</output>
+                            </div>
+                            <input type="range" id="inputSugar" min="0" max="15" step="1" value="5">
+                        </div>
+                        <div class="slider-group">
+                            <div class="slider-head">
+                                <span class="label">Milk</span>
+                                <output id="valMilk">40ml</output>
+                            </div>
+                            <input type="range" id="inputMilk" min="0" max="180" step="1" value="40">
+                        </div>
+                    </div>
+                    <button id="stepBtn" class="primary-btn">Brew & Serve</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./static/js/main.js"></script>
+</body>
+
+</html>
