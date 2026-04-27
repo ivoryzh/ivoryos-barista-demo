@@ -28,11 +28,11 @@
                     </div>
                     <div class="pycharm-window">
                         <pre><code><span class="keyword">class</span> <span class="classname">CoffeeMachine</span><span class="punct">:</span>
-    <span class="keyword">def</span> <span class="method">add_beans</span>(<span class="self">self</span><span class="punct">,</span> <span class="property">bean_grams</span><span class="punct">:</span> <span class="type">float</span>) <span class="punct">-&gt;</span> <span class="type">float</span><span class="punct">:</span><span class="folded">...</span>
+    <span class="keyword">def</span> <span class="method">add_beans</span>(<span class="self">self</span><span class="punct">,</span> <span class="property">bean_grams</span><span class="punct">:</span> <span class="type">float</span>)<span class="punct">:</span><span class="folded">...</span>
     
-    <span class="keyword">def</span> <span class="method">add_sugar</span>(<span class="self">self</span><span class="punct">,</span> <span class="property">sugar_grams</span><span class="punct">:</span> <span class="type">float</span>) <span class="punct">-&gt;</span> <span class="type">float</span><span class="punct">:</span><span class="folded">...</span>
+    <span class="keyword">def</span> <span class="method">add_sugar</span>(<span class="self">self</span><span class="punct">,</span> <span class="property">sugar_grams</span><span class="punct">:</span> <span class="type">float</span>)<span class="punct">:</span><span class="folded">...</span>
     
-    <span class="keyword">def</span> <span class="method">add_milk</span>(<span class="self">self</span><span class="punct">,</span> <span class="property">milk_ml</span><span class="punct">:</span> <span class="type">float</span>) <span class="punct">-&gt;</span> <span class="type">float</span><span class="punct">:</span><span class="folded">...</span>
+    <span class="keyword">def</span> <span class="method">add_milk</span>(<span class="self">self</span><span class="punct">,</span> <span class="property">milk_ml</span><span class="punct">:</span> <span class="type">float</span>)<span class="punct">:</span><span class="folded">...</span>
     
     <span class="keyword">def</span> <span class="method">top_up_with_hot_water</span>(<span class="self">self</span>) <span class="punct">-&gt;</span> <span class="type">float</span><span class="punct">:</span><span class="folded">...</span>
 
@@ -42,11 +42,19 @@
                 </div>
 
                 <div class="task-description card">
-                    <p>I have a Python <strong>barista</strong> API, and a <strong>scoring customer</strong>.</p>
-                    <p><strong>The Task:</strong> Teach a non-coder how to use this barista to satisfy this customer.
+<!--                    <p>I have a Python <strong>barista</strong>, and a <strong>scoring customer</strong>.</p>-->
+                    <p><strong>The Task:</strong> Teach a non-coder barista how to program and satisfy this customer.
                     </p>
-                    <p><em>Why?</em> Science is sometimes a black box. In a <strong>self-driving lab</strong>,
-                        developers must teach scientists how to code an optimization loop.</p>
+                    <div class="why-block">
+                        <div class="why-copy">
+                            <p><em>Why?</em> Science is sometimes a black box. In a <strong>self-driving lab</strong> setup,
+                                developers must teach scientists how to code an optimization loop.</p>
+                        </div>
+                        <figure class="why-figure">
+                            <img src="./static/img/sdl.png" class="why-illustration"
+                                alt="Illustration of a self-driving lab robot handling a flask beside test tubes">
+                        </figure>
+                    </div>
                 </div>
             </div>
 
@@ -95,21 +103,21 @@
                                 <span class="label">Beans</span>
                                 <output id="valBeans">15g</output>
                             </div>
-                            <input type="range" id="inputBeans" min="5" max="30" step="1" value="15">
+                            <label for="inputBeans"></label><input type="range" id="inputBeans" min="5" max="30" step="1" value="15">
                         </div>
                         <div class="slider-group">
                             <div class="slider-head">
                                 <span class="label">Sugar</span>
                                 <output id="valSugar">5g</output>
                             </div>
-                            <input type="range" id="inputSugar" min="0" max="15" step="1" value="5">
+                            <label for="inputSugar"></label><input type="range" id="inputSugar" min="0" max="15" step="1" value="5">
                         </div>
                         <div class="slider-group">
                             <div class="slider-head">
                                 <span class="label">Milk</span>
                                 <output id="valMilk">40ml</output>
                             </div>
-                            <input type="range" id="inputMilk" min="0" max="180" step="1" value="40">
+                            <label for="inputMilk"></label><input type="range" id="inputMilk" min="0" max="180" step="1" value="40">
                         </div>
                     </div>
                     <button id="stepBtn" class="primary-btn">Brew & Serve</button>
