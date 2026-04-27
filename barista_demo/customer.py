@@ -23,7 +23,7 @@ class PreferenceProfile:
     milk_ml: float = 35.0
 
 
-class AnnoyingCustomer:
+class ScoringCustomer:
     """
     Returns a single 1-10 score for a coffee.
 
@@ -64,3 +64,7 @@ class AnnoyingCustomer:
 
         raw_score = 10.0 - penalty
         return round(_clamp(raw_score, 1.0, 10.0), 2)
+
+
+# Backward-compatible alias for older imports.
+AnnoyingCustomer = ScoringCustomer

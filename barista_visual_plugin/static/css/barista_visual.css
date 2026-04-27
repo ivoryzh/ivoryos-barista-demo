@@ -1,0 +1,549 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+
+:root {
+    --bg-main: #f7f1e8;
+    --text-main: #2f1d15;
+    --text-muted: rgba(47, 29, 21, 0.68);
+    --card-bg: rgba(255, 252, 247, 0.94);
+    --card-border: rgba(141, 76, 40, 0.14);
+    --accent: #b45b2d;
+    --accent-hover: #cb6b37;
+    --shadow-soft: 0 18px 42px rgba(101, 63, 34, 0.14);
+    --water: linear-gradient(180deg, rgba(188, 220, 239, 0.72), rgba(125, 180, 214, 0.92));
+    --milk: linear-gradient(180deg, rgba(250, 245, 239, 0.98), rgba(236, 225, 215, 0.98));
+    --coffee-bean: linear-gradient(180deg, #6f4226, #3f210f);
+    --sugar: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(230, 230, 230, 0.92));
+}
+
+.barista-plugin-page *,
+.barista-standalone {
+    box-sizing: border-box;
+}
+
+.barista-standalone {
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-main);
+    background: var(--bg-main);
+}
+
+.barista-plugin-page {
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-main);
+}
+
+.barista-plugin-page .barista-shell {
+    width: min(100%, 380px);
+    margin: 0 auto;
+    padding: 18px;
+    display: grid;
+    gap: 14px;
+}
+
+.barista-plugin-page .legend-card,
+.barista-plugin-page .visual-card,
+.barista-plugin-page .control-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.barista-plugin-page .legend-card {
+    padding: 14px 16px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 12px;
+}
+
+.barista-plugin-page .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.barista-plugin-page .legend-icon {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.barista-plugin-page .visual-card {
+    padding: 18px 18px 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.barista-plugin-page .visual-card::before {
+    content: none;
+}
+
+.barista-plugin-page .visual-head {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.barista-plugin-page .eyebrow {
+    margin: 0 0 4px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.68rem;
+    font-weight: 800;
+}
+
+.barista-plugin-page .visual-head h1 {
+    margin: 0;
+    font-size: 1.45rem;
+    line-height: 1.05;
+}
+
+.barista-plugin-page .stage-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 22px;
+    padding-top: 4px;
+    min-height: 220px;
+}
+
+.barista-plugin-page .coffee-glass {
+    position: relative;
+    width: 110px;
+    padding-top: 10px;
+    filter: drop-shadow(0 18px 22px rgba(87, 55, 31, 0.18));
+}
+
+.barista-plugin-page .glass-rim {
+    width: 84px;
+    height: 12px;
+    margin: 0 auto -6px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 2px solid rgba(180, 91, 45, 0.12);
+    box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.85);
+    position: relative;
+    z-index: 2;
+}
+
+.barista-plugin-page .glass-body {
+    position: relative;
+    width: 98px;
+    height: 142px;
+    margin: 0 auto;
+    border-radius: 12px 12px 26px 26px;
+    border: 2px solid rgba(180, 91, 45, 0.14);
+    border-top: none;
+    background: rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: inset 8px 0 18px rgba(255, 255, 255, 0.52), inset -8px 0 18px rgba(87, 55, 31, 0.05);
+    overflow: hidden;
+}
+
+.barista-plugin-page .layers {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    opacity: 1;
+    transition: opacity 0.45s ease;
+}
+
+.barista-plugin-page .layer {
+    width: 100%;
+    height: 0%;
+    transition: height 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+    flex-shrink: 0;
+}
+
+.barista-plugin-page .layer-sugar {
+    background: var(--sugar);
+}
+
+.barista-plugin-page .layer-beans {
+    background: var(--coffee-bean);
+}
+
+.barista-plugin-page .layer-milk {
+    background: var(--milk);
+}
+
+.barista-plugin-page .layer-water {
+    background: var(--water);
+}
+
+.barista-plugin-page .mixed-liquid {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 0%;
+    opacity: 0;
+    transition: opacity 0.45s ease, height 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.barista-plugin-page .customer-col {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    min-width: 118px;
+    padding-top: 36px;
+}
+
+.barista-plugin-page .speech-bubble {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    background: #fff;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    border-radius: 18px;
+    padding: 8px 12px 7px;
+    min-width: 102px;
+    box-shadow: 0 12px 20px rgba(180, 91, 45, 0.14);
+    opacity: 0;
+    pointer-events: none;
+    text-align: center;
+    z-index: 2;
+}
+
+.barista-plugin-page .speech-bubble::after {
+    content: "";
+    position: absolute;
+    bottom: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 8px 8px 0;
+    border-style: solid;
+    border-color: var(--accent) transparent transparent transparent;
+}
+
+.barista-plugin-page .speech-bubble.visible {
+    animation: bubble-in 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.2) forwards;
+}
+
+.barista-plugin-page .score-label {
+    display: block;
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.barista-plugin-page .score-value {
+    display: block;
+    margin-top: 2px;
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.barista-plugin-page .customer-avatar {
+    width: 96px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.25s ease;
+}
+
+.barista-plugin-page .customer-avatar.is-brewing {
+    transform: translateY(-6px) scale(1.03);
+}
+
+.barista-plugin-page .customer-avatar.is-brewing .eye {
+    transform: scaleY(0.75);
+}
+
+.barista-plugin-page .avatar-head {
+    position: relative;
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #f7d7b8, #edbc91);
+    box-shadow: inset 0 -6px 12px rgba(173, 105, 57, 0.14), 0 14px 22px rgba(87, 55, 31, 0.14);
+}
+
+.barista-plugin-page .avatar-head::before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: 8px;
+    right: 8px;
+    height: 24px;
+    border-radius: 999px 999px 12px 12px;
+    background: linear-gradient(180deg, #4a2a18, #2d170d);
+}
+
+.barista-plugin-page .eye {
+    position: absolute;
+    top: 31px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #2b1b14;
+}
+
+.barista-plugin-page .eye-left {
+    left: 21px;
+}
+
+.barista-plugin-page .eye-right {
+    right: 21px;
+}
+
+.barista-plugin-page .mouth {
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    width: 24px;
+    height: 12px;
+    border-bottom: 3px solid #8d4c28;
+    transform: translateX(-50%);
+    border-radius: 0 0 16px 16px;
+    transition: all 0.2s ease;
+}
+
+.barista-plugin-page .avatar-body {
+    width: 92px;
+    height: 52px;
+    border-radius: 30px 30px 18px 18px;
+    background: linear-gradient(180deg, #c76736, #944a29);
+    box-shadow: 0 14px 20px rgba(87, 55, 31, 0.12);
+}
+
+.barista-plugin-page .mood-delighted .mouth {
+    width: 26px;
+    height: 14px;
+    border-bottom-width: 4px;
+    border-radius: 0 0 18px 18px;
+}
+
+.barista-plugin-page .mood-delighted .eye {
+    transform: scale(1.05);
+}
+
+.barista-plugin-page .mood-pleased .mouth {
+    width: 24px;
+    height: 12px;
+    border-bottom-width: 3px;
+    border-radius: 0 0 16px 16px;
+}
+
+.barista-plugin-page .mood-neutral .mouth {
+    width: 20px;
+    height: 0;
+    border-bottom-width: 3px;
+    border-radius: 0;
+}
+
+.barista-plugin-page .mood-disappointed .mouth {
+    width: 22px;
+    height: 10px;
+    bottom: 15px;
+    border-top: 3px solid #8d4c28;
+    border-bottom: 0;
+    border-radius: 16px 16px 0 0;
+}
+
+.barista-plugin-page .mood-disappointed .eye {
+    top: 33px;
+    transform: scaleY(0.8);
+}
+
+.barista-plugin-page .reaction-copy {
+    margin: 10px 0 0;
+    min-height: 1.1em;
+    color: var(--text-muted);
+    font-size: 0.84rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-align: center;
+}
+
+.barista-plugin-page .control-card {
+    padding: 16px;
+    display: grid;
+    gap: 12px;
+}
+
+.barista-plugin-page .live-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.64);
+    border: 1px solid rgba(180, 91, 45, 0.1);
+}
+
+.barista-plugin-page .status-label {
+    margin: 0 0 4px;
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.barista-plugin-page .status-value {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.barista-plugin-page .status-pulse {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: rgba(180, 91, 45, 0.25);
+    box-shadow: 0 0 0 0 rgba(180, 91, 45, 0.22);
+}
+
+.barista-plugin-page .status-pulse.is-active {
+    animation: pulse 0.9s ease-out;
+}
+
+.barista-plugin-page .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.barista-plugin-page .metric-card {
+    padding: 12px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(180, 91, 45, 0.08);
+}
+
+.barista-plugin-page .metric-label {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.barista-plugin-page .metric-value {
+    display: block;
+    margin-top: 4px;
+    color: var(--accent);
+    font-size: 1.05rem;
+    font-weight: 800;
+}
+
+.barista-plugin-page .reveal-btn {
+    border: 1px solid rgba(180, 91, 45, 0.16);
+    border-radius: 16px;
+    padding: 12px 14px;
+    background: #fff;
+    color: var(--accent);
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.18s ease, color 0.18s ease, opacity 0.18s ease;
+}
+
+.barista-plugin-page .reveal-btn:hover:not(:disabled) {
+    background: rgba(180, 91, 45, 0.08);
+}
+
+.barista-plugin-page .reveal-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+.barista-plugin-page .preference-panel {
+    display: grid;
+    gap: 10px;
+    padding: 14px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.68);
+    border: 1px solid rgba(180, 91, 45, 0.1);
+}
+
+.barista-plugin-page .preference-title {
+    margin: 0;
+    color: var(--text-main);
+    font-size: 0.9rem;
+    font-weight: 800;
+}
+
+.barista-plugin-page .compare-copy {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.84rem;
+    line-height: 1.35;
+}
+
+@keyframes bubble-in {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-6px) scale(0.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(180, 91, 45, 0.28);
+    }
+
+    60% {
+        transform: scale(1.18);
+        box-shadow: 0 0 0 14px rgba(180, 91, 45, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(180, 91, 45, 0);
+    }
+}
+
+@media (max-width: 420px) {
+    .barista-plugin-page .barista-shell {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .barista-plugin-page .visual-card,
+    .barista-plugin-page .legend-card,
+    .barista-plugin-page .control-card {
+        border-radius: 20px;
+    }
+
+    .barista-plugin-page .stage-content {
+        gap: 14px;
+        min-height: 204px;
+    }
+
+    .barista-plugin-page .customer-col {
+        min-width: 102px;
+    }
+}

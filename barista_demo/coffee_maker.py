@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import time
 from dataclasses import asdict, dataclass
 
 
@@ -48,18 +49,22 @@ class CoffeeMachine:
     def add_beans(self, bean_grams: float) -> float:
         bean_grams = _bounded("bean_grams", bean_grams, 5.0, 30.0)
         self.state.bean_grams = bean_grams
+        time.sleep(0.2)
         return bean_grams
 
     def add_sugar(self, sugar_grams: float) -> float:
         sugar_grams = _bounded("sugar_grams", sugar_grams, 0.0, 15.0)
         self.state.sugar_grams = sugar_grams
+        time.sleep(0.2)
         return sugar_grams
 
     def add_milk(self, milk_ml: float) -> float:
         milk_ml = _bounded("milk_ml", milk_ml, 0.0, 180.0)
         self.state.milk_ml = milk_ml
+        time.sleep(0.2)
         return milk_ml
 
     def top_up_with_hot_water(self) -> float:
         self.state.water_ml = round(self.cup_size_ml - self.state.milk_ml, 4)
+        time.sleep(0.2)
         return self.state.water_ml

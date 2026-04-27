@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Barista Visual</title>
+</head>
+<body class="barista-standalone">
+
+{% block body %}
+<link rel="stylesheet" href="{{ url_for('barista_visual_plugin.static', filename='css/barista_visual.css') }}">
+
+<div class="barista-plugin-page" data-state-url="{{ url_for('barista_visual_plugin.state') }}">
+<div class="barista-shell">
+    <div class="legend-card">
+        <div class="legend-item">
+            <img src="{{ url_for('barista_visual_plugin.static', filename='img/coffee_bean.svg') }}" class="legend-icon" alt="Beans">
+            <span>Beans</span>
+        </div>
+        <div class="legend-item">
+            <img src="{{ url_for('barista_visual_plugin.static', filename='img/sugar_cube.svg') }}" class="legend-icon" alt="Sugar">
+            <span>Sugar</span>
+        </div>
+        <div class="legend-item">
+            <img src="{{ url_for('barista_visual_plugin.static', filename='img/milk.svg') }}" class="legend-icon" alt="Milk">
+            <span>Milk</span>
+        </div>
+        <div class="legend-item">
+            <img src="{{ url_for('barista_visual_plugin.static', filename='img/water.svg') }}" class="legend-icon" alt="Water">
+            <span>Water</span>
+        </div>
+    </div>
+
+    <div class="visual-card">
+        <div class="stage-content">
+            <div class="coffee-glass" aria-label="Coffee glass">
+                <div class="glass-rim"></div>
+                <div class="glass-body">
+                    <div class="layers" id="layersContainer">
+                        <div class="layer layer-water" id="layerWater"></div>
+                        <div class="layer layer-milk" id="layerMilk"></div>
+                        <div class="layer layer-beans" id="layerBeans"></div>
+                        <div class="layer layer-sugar" id="layerSugar"></div>
+                    </div>
+                    <div class="mixed-liquid" id="mixedLiquid"></div>
+                </div>
+            </div>
+
+            <div class="customer-col">
+                <div class="speech-bubble" id="scoreBadge" aria-live="polite">
+                    <span class="score-label">Score</span>
+                    <span class="score-value" id="scoreValue">--</span>
+                </div>
+                <div class="customer-avatar mood-neutral" id="customerAvatar" aria-label="Customer reaction">
+                    <div class="avatar-head">
+                        <span class="eye eye-left"></span>
+                        <span class="eye eye-right"></span>
+                        <span class="mouth"></span>
+                    </div>
+                    <div class="avatar-body"></div>
+                </div>
+                <p class="reaction-copy" id="reactionCopy">Waiting</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="control-card">
+        <div class="live-status">
+            <div>
+                <p class="status-label">Status</p>
+                <p class="status-value" id="liveAction">Waiting</p>
+            </div>
+            <span class="status-pulse" id="statusPulse" aria-hidden="true"></span>
+        </div>
+
+        <div class="metric-grid">
+            <div class="metric-card">
+                <span class="metric-label">Beans</span>
+                <strong class="metric-value" id="metricBeans">0g</strong>
+            </div>
+            <div class="metric-card">
+                <span class="metric-label">Sugar</span>
+                <strong class="metric-value" id="metricSugar">0g</strong>
+            </div>
+            <div class="metric-card">
+                <span class="metric-label">Milk</span>
+                <strong class="metric-value" id="metricMilk">0ml</strong>
+            </div>
+            <div class="metric-card">
+                <span class="metric-label">Water</span>
+                <strong class="metric-value" id="metricWater">0ml</strong>
+            </div>
+        </div>
+
+        <button class="reveal-btn" id="revealPreferenceBtn" type="button" disabled>
+            Reveal Preference
+        </button>
+
+        <div class="preference-panel" id="preferencePanel" hidden>
+            <p class="preference-title">Customer preference</p>
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <span class="metric-label">Beans</span>
+                    <strong class="metric-value" id="prefBeans">--</strong>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-label">Sugar</span>
+                    <strong class="metric-value" id="prefSugar">--</strong>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-label">Milk</span>
+                    <strong class="metric-value" id="prefMilk">--</strong>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-label">Water</span>
+                    <strong class="metric-value" id="prefWater">--</strong>
+                </div>
+            </div>
+            <p class="compare-copy" id="compareCopy">Compare your drink to the target recipe.</p>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="{{ url_for('barista_visual_plugin.static', filename='js/barista_visual.js') }}"></script>
+{% endblock %}
+</body>
+</html>

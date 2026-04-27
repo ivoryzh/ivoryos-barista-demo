@@ -1,9 +1,9 @@
-from . import AnnoyingCustomer, CoffeeMachine
+from . import CoffeeMachine, ScoringCustomer
 
 
 def main() -> None:
     machine = CoffeeMachine()
-    customer = AnnoyingCustomer(machine=machine)
+    customer = ScoringCustomer(machine=machine)
 
     bean_grams = machine.add_beans(14.0)
     sugar_grams = machine.add_sugar(5.5)

@@ -1,0 +1,7 @@
+include README.md
+include LICENSE
+include requirements.txt
+graft barista_visual_plugin/templates
+graft barista_visual_plugin/static
+global-exclude *.py[cod]
+global-exclude __pycache__

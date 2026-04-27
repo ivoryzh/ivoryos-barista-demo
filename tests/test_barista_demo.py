@@ -1,13 +1,14 @@
 import unittest
 
-from app import app
-from barista_demo import AnnoyingCustomer, CoffeeMachine
+from flask import Flask
+from barista_demo import CoffeeMachine, ScoringCustomer
+from barista_visual_plugin.plugin import barista_visual_bp
 
 
 class BaristaDemoTests(unittest.TestCase):
     def test_customer_prefers_near_target_recipe(self) -> None:
         machine = CoffeeMachine()
-        customer = AnnoyingCustomer(machine=machine)
+        customer = ScoringCustomer(machine=machine)
         machine.add_beans(14.0)
         machine.add_sugar(6.0)
         machine.add_milk(35.0)
@@ -38,7 +39,7 @@ class BaristaDemoTests(unittest.TestCase):
 
     def test_score_is_clamped_to_customer_scale(self) -> None:
         machine = CoffeeMachine()
-        customer = AnnoyingCustomer(machine=machine)
+        customer = ScoringCustomer(machine=machine)
         machine.add_beans(30.0)
         machine.add_sugar(15.0)
         machine.add_milk(180.0)
@@ -48,13 +49,16 @@ class BaristaDemoTests(unittest.TestCase):
         self.assertGreaterEqual(score, 1.0)
         self.assertLessEqual(score, 10.0)
 
-    def test_index_route_renders_for_annoying_customer(self) -> None:
+    def test_index_route_renders_for_scoring_customer(self) -> None:
+        app = Flask(__name__)
+        app.register_blueprint(barista_visual_bp)
         client = app.test_client()
 
         response = client.get("/")
 
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b"Customer approves", response.data)
+        self.assertIn(b"Reveal Preference", response.data)
+
 
 
 if __name__ == "__main__":
